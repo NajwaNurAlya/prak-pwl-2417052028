@@ -64,3 +64,16 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Tugas Pertemuan 4 - Controllers dan Views
+
+Implementasi Laravel pada Pertemuan 4 Pemrograman Web Lanjut yang mencakup:
+- Controller dan routing user
+- View menggunakan Blade
+- Layout Blade
+- Navbar dan footer sebagai component
+- Form tambah user
+- Tampilan list user
+- Dynamic user table component
+- Integrasi data user dengan tabel kelas
