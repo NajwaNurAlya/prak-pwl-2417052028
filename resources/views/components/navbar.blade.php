@@ -1,18 +1,25 @@
-<nav class="navbar navbar-expand-lg dark-navbar">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="{{ route('user.index') }}">
+<nav class="dark-navbar">
+    <div class="container d-flex justify-content-between align-items-center">
+
+        {{-- Logo / Brand --}}
+        <a href="{{ url('/user') }}" class="navbar-brand text-decoration-none">
             <span class="brand-icon">◆</span>
             Pemrograman Web Lanjut Sistem Informasi
         </a>
-        <div class="d-flex align-items-center gap-3">
-            <a href="{{ route('user.index') }}"
-               class="nav-link-custom">
+
+
+        {{-- Navigation --}}
+        <div class="d-flex align-items-center gap-4">
+
+            <a href="{{ url('/user') }}" class="nav-link-custom">
                 Users
             </a>
-            <a href="{{ route('user.create') }}"
-               class="btn btn-add-user">
-                + Add User
+
+            <a href="{{ url('/matakuliah') }}" class="nav-link-custom">
+                Mata Kuliah
             </a>
+
         </div>
+
     </div>
 </nav>

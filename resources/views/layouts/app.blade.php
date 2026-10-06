@@ -48,20 +48,6 @@
             color: #ffffff;
         }
 
-        .btn-add-user {
-            background: #c9a7ff;
-            color: #17131d;
-            border: none;
-            font-weight: 600;
-            border-radius: 10px;
-            padding: 9px 16px;
-        }
-
-        .btn-add-user:hover {
-            background: #b991f5;
-            color: #17131d;
-        }
-
         .page-content {
             flex: 1;
             padding: 45px 0;
