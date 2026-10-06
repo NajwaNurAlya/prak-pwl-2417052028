@@ -13,6 +13,7 @@ class MataKuliahController extends Controller
             'title' => 'List Mata Kuliah',
             'mks'   => Matakuliah::all(),
         ];
+
         return view('list_mk', $data);
     }
 
@@ -29,5 +30,40 @@ class MataKuliahController extends Controller
         ]);
 
         return redirect()->to('/matakuliah');
+    }
+
+    public function edit($id)
+    {
+        $mk = Matakuliah::findOrFail($id);
+
+        return view('edit_mk', [
+            'title' => 'Edit Mata Kuliah',
+            'mk'    => $mk,
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $mk = Matakuliah::findOrFail($id);
+
+        $mk->update([
+            'nama_mk' => $request->input('nama_mk'),
+            'sks'     => $request->input('sks'),
+        ]);
+
+        return redirect()
+            ->to('/matakuliah')
+            ->with('success', 'Data mata kuliah berhasil diperbarui.');
+    }
+
+    public function destroy($id)
+    {
+        $mk = Matakuliah::findOrFail($id);
+
+        $mk->delete();
+
+        return redirect()
+            ->to('/matakuliah')
+            ->with('success', 'Data mata kuliah berhasil dihapus.');
     }
 }

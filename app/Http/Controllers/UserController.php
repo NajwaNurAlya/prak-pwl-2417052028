@@ -19,12 +19,14 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $kelas = Kelas::where('nama_kelas', $request->kelas)->first();
+
         $user = new UserModel();
 
         $user->name = $request->nama;
         $user->nama = $request->nama;
-        $user->nim = $request->npm;
-        $user->kelas_id = $request->kelas_id;
+        $user->nim = $request->nim;
+        $user->kelas_id = $kelas ? $kelas->id : null;
 
         $user->save();
 
@@ -36,5 +38,45 @@ class UserController extends Controller
         $users = UserModel::getUser();
 
         return view('list_user', compact('users'));
+    }
+
+    public function edit($id)
+    {
+        $user = UserModel::findOrFail($id);
+
+        $kelas = Kelas::getKelas();
+
+        return view('edit_user', [
+            'title' => 'Edit Pengguna',
+            'user' => $user,
+            'kelas' => $kelas,
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = UserModel::findOrFail($id);
+
+        $kelas = Kelas::where('nama_kelas', $request->kelas)->first();
+
+        $user->name = $request->nama;
+        $user->nama = $request->nama;
+        $user->nim = $request->nim;
+        $user->kelas_id = $kelas ? $kelas->id : null;
+
+        $user->save();
+
+        return redirect('/user')
+            ->with('success', 'Data pengguna berhasil diperbarui.');
+    }
+
+    public function destroy($id)
+    {
+        $user = UserModel::findOrFail($id);
+
+        $user->delete();
+
+        return redirect('/user')
+            ->with('success', 'Data pengguna berhasil dihapus.');
     }
 }

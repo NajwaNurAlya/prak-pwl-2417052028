@@ -7,17 +7,19 @@
     <div class="create-wrapper">
 
         <h1 class="page-title">
-            Buat Pengguna Baru
+            Edit Pengguna
         </h1>
 
         <p class="page-subtitle">
-            Tambahkan data pengguna baru ke dalam sistem.
+            Perbarui data pengguna yang terdaftar pada sistem.
         </p>
 
 
-        <form action="{{ route('user.store') }}" method="POST">
+        <form action="{{ route('user.update', $user->id) }}" method="POST">
 
             @csrf
+            @method('PUT')
+
 
             {{-- Nama --}}
             <div class="mb-4">
@@ -30,7 +32,7 @@
                        id="nama"
                        name="nama"
                        class="form-control custom-input"
-                       placeholder="Masukkan nama pengguna"
+                       value="{{ $user->nama }}"
                        required>
 
             </div>
@@ -47,7 +49,7 @@
                        id="nim"
                        name="nim"
                        class="form-control custom-input"
-                       placeholder="Masukkan NPM"
+                       value="{{ $user->nim }}"
                        required>
 
             </div>
@@ -64,6 +66,7 @@
                        id="kelas"
                        name="kelas"
                        class="form-control custom-input"
+                       value="{{ $user->nama_kelas ?? '' }}"
                        placeholder="Contoh: A"
                        required>
 
@@ -74,7 +77,7 @@
             <div class="d-flex gap-2">
 
                 <button type="submit" class="btn-save">
-                    Simpan Pengguna
+                    Simpan Perubahan
                 </button>
 
                 <a href="{{ url('/user') }}"
@@ -99,7 +102,6 @@
         margin: 0 auto;
     }
 
-
     .form-label-custom {
         color: #f5f5f5;
         font-size: 16px;
@@ -107,7 +109,6 @@
         margin-bottom: 8px;
         display: block;
     }
-
 
     .custom-input {
         width: 100%;
@@ -119,17 +120,12 @@
         color: #222 !important;
     }
 
-    .custom-input::placeholder {
-        color: #999;
-    }
-
     .custom-input:focus {
         background: #ffffff !important;
         border-color: #c9a7ff !important;
         box-shadow: 0 0 0 3px rgba(201, 167, 255, 0.15) !important;
         color: #222 !important;
     }
-
 
     .btn-save {
         background: #c9a7ff;
@@ -138,7 +134,6 @@
         border-radius: 9px;
         padding: 11px 18px;
         font-weight: 600;
-        text-decoration: none;
         transition: 0.2s;
     }
 
@@ -147,7 +142,6 @@
         color: #17131d;
         transform: translateY(-1px);
     }
-
 
     .btn-cancel {
         background: #292936;
